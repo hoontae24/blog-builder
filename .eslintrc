@@ -1,0 +1,6 @@
+{
+  "extends": [
+    "standard",
+    "prettier" // Prettier should be placed last.
+  ]
+}
