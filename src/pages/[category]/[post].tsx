@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from "next"
+import "github-markdown-css"
 
 import { Explorer } from "@/libs/explorer"
 import { Post } from "@/types/post"
@@ -18,7 +19,10 @@ const PostPage = (props: Props) => {
   if (!post) return null
   return (
     <div>
-      <span dangerouslySetInnerHTML={{ __html: post.html }}></span>
+      <span
+        className="markdown-body"
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      ></span>
     </div>
   )
 }
