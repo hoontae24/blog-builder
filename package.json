@@ -21,6 +21,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "github-markdown-css": "^4.0.0",
     "gray-matter": "^4.0.3",
+    "highlight.js": "^11.2.0",
     "marked": "^3.0.2",
     "next": "^11.1.0",
     "node-html-parser": "^4.1.4",

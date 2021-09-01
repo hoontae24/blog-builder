@@ -7,7 +7,7 @@ export interface Post {
   category: string
   tags: string[]
   seriesId: number | null
-  content: string
+  markdown: string
   html: string
   excerpt: string
 }

@@ -36,10 +36,11 @@ export class Explorer {
         excerpt: true,
       })
       const href = `/${group}/${slug}`
-      const html = marked(content).replace(
+      const markdown = content.replace(
         /\.\/img\//g,
         `${process.env.BASE_PATH}${href}/img/`
       )
+      const html = marked(markdown)
 
       const post: Post = {
         href: href,
@@ -50,7 +51,7 @@ export class Explorer {
         category: data.category,
         tags: data.tags,
         seriesId: data.seriesId || null,
-        content: content,
+        markdown: markdown,
         html: html,
         excerpt: htmlParse(html).innerText.trim().slice(0, 200),
       }
