@@ -4,11 +4,11 @@ import fs from "fs/promises"
 import marked from "marked"
 import { parse as htmlParse } from "node-html-parser"
 
-import config from "@/libs/config.json"
+import env from "@/libs/env"
 import { Post } from "@/types/post"
 
-const root = config.PATH_OF_ARTICLES
-const filename = config.FILENAME_OF_ARTICLES
+const root = env.ARTICLES_ROOT
+const filename = env.ARTICLE_FILENAME
 
 export class Explorer {
   static loaded = false
@@ -29,14 +29,20 @@ export class Explorer {
   static run = async (): Promise<typeof Explorer> => {
     const paths = await getPaths()
 
+    const posts: Post[] = []
     for (const [group, slug] of paths) {
       const path = [root, group, slug, filename].join("/")
       const { content, data, excerpt } = grayMatter.read(path, {
         excerpt: true,
       })
-      const html = marked(content)
+      const href = `/${group}/${slug}`
+      const html = marked(content).replace(
+        /\.\/img\//g,
+        `${process.env.BASE_PATH}${href}/img/`
+      )
 
       const post: Post = {
+        href: href,
         paths: [group, slug],
         title: data.title,
         subtitle: data.subtitle || "",
@@ -49,9 +55,16 @@ export class Explorer {
         excerpt: htmlParse(html).innerText.trim().slice(0, 200),
       }
 
-      Explorer.posts.push(post)
+      posts.push(post)
     }
+    posts.sort((prev, next) => {
+      return (
+        dayjs(next.date).toDate().getTime() -
+        dayjs(prev.date).toDate().getTime()
+      )
+    })
 
+    Explorer.posts = posts
     Explorer.loaded = true
     return Explorer
   }

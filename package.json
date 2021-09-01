@@ -4,7 +4,6 @@
   "author": "hoontae24",
   "license": "MIT",
   "scripts": {
-    "fetch": "git clone $REPO_ARTICLES .articles",
     "dev": "next dev",
     "build": "next build && next export"
   },

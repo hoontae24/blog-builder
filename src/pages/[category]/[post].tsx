@@ -13,7 +13,14 @@ type Params = {
 }
 
 const PostPage = (props: Props) => {
-  return <div>{props.post?.title}</div>
+  const { post } = props
+
+  if (!post) return null
+  return (
+    <div>
+      <span dangerouslySetInnerHTML={{ __html: post.html }}></span>
+    </div>
+  )
 }
 
 export default PostPage

@@ -3,7 +3,8 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=dotenv,react,node,macos,linux
 
 ### dotenv ###
-.env
+.env*
+!.env.defaults
 
 ### Linux ###
 *~
@@ -185,3 +186,6 @@ sketch
 
 # Post Resources
 .articles
+
+# All resources from Articles' REPO
+public 

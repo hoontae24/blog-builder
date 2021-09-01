@@ -1,4 +1,5 @@
 export interface Post {
+  href: string
   paths: string[]
   title: string
   subtitle: string
