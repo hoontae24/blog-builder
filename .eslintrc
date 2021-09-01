@@ -1,11 +1,12 @@
 {
   "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "plugins": ["@typescript-eslint"],
   "extends": [
     "standard",
     "prettier" // Prettier should be placed last.
   ],
-  "rules": {
-    "@typescript-eslint/rule-name": "error"
-  }
+  "rules": {}
 }
