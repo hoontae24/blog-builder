@@ -31,9 +31,7 @@ export const getStaticPaths: GetStaticPaths<Params> = async (ctx) => {
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
   const { category, post: slug } = ctx.params || {}
-  const posts = await Explorer.getPosts()
-
-  const post = posts.find((p) => p.paths[0] === category && p.paths[1] === slug)
+  const post = await Explorer.getPostByPath([category || "", slug || ""])
 
   if (!post) {
     return {
@@ -43,7 +41,6 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
       },
     }
   }
-
   return {
     props: { post: post },
   }

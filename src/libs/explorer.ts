@@ -15,10 +15,15 @@ export class Explorer {
   static posts: Post[] = []
 
   static getPosts = async (): Promise<Post[]> => {
-    if (!Explorer.loaded) {
-      await Explorer.run()
-    }
+    if (!Explorer.loaded) await Explorer.run()
     return Explorer.posts
+  }
+
+  static getPostByPath = async (path: string[]): Promise<Post | undefined> => {
+    if (!Explorer.loaded) await Explorer.run()
+    return Explorer.posts.find((post) =>
+      post.paths.every((p, i) => p === path[i])
+    )
   }
 
   static run = async (): Promise<typeof Explorer> => {
