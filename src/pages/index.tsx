@@ -15,7 +15,7 @@ const IndexPage = (props: Props) => {
     <div>
       {posts.map((post, i) => (
         <div key={post.paths.join("/")}>
-          <Link href={post.href}>
+          <Link href={`/${post.slug}`}>
             <span>
               {i + 1} / {post.title}
             </span>

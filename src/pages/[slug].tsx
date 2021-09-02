@@ -1,11 +1,12 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 
-import Markdown from "@/components/Markdown"
+import PostHeader from "@/components/post/PostHeader"
+import PostContent from "@/components/post/PostContent"
 import { Explorer } from "@/libs/explorer"
 import { Post } from "@/types/post"
 
 type Props = {
-  post: Post | null
+  post: Post
 }
 
 type Params = {
@@ -15,10 +16,10 @@ type Params = {
 const PostPage = (props: Props) => {
   const { post } = props
 
-  if (!post) return null
   return (
     <div>
-      <Markdown markdown={post.markdown} />
+      <PostHeader post={post} />
+      <PostContent post={post} />
     </div>
   )
 }
@@ -40,8 +41,8 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
   const { slug } = ctx.params || {}
   const post = await Explorer.getPostBySlug(slug || "")
 
+  if (!post) return { notFound: true }
   return {
-    props: { post: post || null },
-    ...(post ? {} : { redirect: { destination: "/404" } }),
+    props: { post: post },
   }
 }

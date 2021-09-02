@@ -15,7 +15,7 @@ const _Markdown = (props: Props) => {
   const html = marked(props.markdown)
 
   useEffect(() => {
-    hljs.initHighlighting()
+    hljs.highlightAll()
   }, [])
 
   return (
