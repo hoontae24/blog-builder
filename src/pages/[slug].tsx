@@ -40,15 +40,8 @@ export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
   const { slug } = ctx.params || {}
   const post = await Explorer.getPostBySlug(slug || "")
 
-  if (!post) {
-    return {
-      props: { post: null },
-      redirect: {
-        destination: "/404",
-      },
-    }
-  }
   return {
-    props: { post: post },
+    props: { post: post || null },
+    ...(post ? {} : { redirect: { destination: "/404" } }),
   }
 }
