@@ -19,11 +19,9 @@ export class Explorer {
     return Explorer.posts
   }
 
-  static getPostByPath = async (path: string[]): Promise<Post | undefined> => {
+  static getPostBySlug = async (slug: string): Promise<Post | undefined> => {
     if (!Explorer.loaded) await Explorer.run()
-    return Explorer.posts.find((post) =>
-      post.paths.every((p, i) => p === path[i])
-    )
+    return Explorer.posts.find((post) => post.slug === slug)
   }
 
   static run = async (): Promise<typeof Explorer> => {
@@ -32,19 +30,18 @@ export class Explorer {
     const posts: Post[] = []
     for (const [group, slug] of paths) {
       const path = [root, group, slug, filename].join("/")
-      const { content, data, excerpt } = grayMatter.read(path, {
+      const { content, data } = grayMatter.read(path, {
         excerpt: true,
       })
-      const href = `/${group}/${slug}`
       const markdown = content.replace(
         /\.\/img\//g,
-        `${process.env.BASE_PATH}${href}/img/`
+        `${env.BASE_PATH}/${group}/${slug}/img/`
       )
       const html = marked(markdown)
 
       const post: Post = {
-        href: href,
         paths: [group, slug],
+        slug: slug,
         title: data.title,
         subtitle: data.subtitle || "",
         date: dayjs(data.date).format("YYYY-MM-DD"),

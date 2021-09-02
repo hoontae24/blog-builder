@@ -1,6 +1,6 @@
 export interface Post {
-  href: string
   paths: string[]
+  slug: string
   title: string
   subtitle: string
   date: string

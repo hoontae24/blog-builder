@@ -9,8 +9,7 @@ type Props = {
 }
 
 type Params = {
-  category: string
-  post: string
+  slug: string
 }
 
 const PostPage = (props: Props) => {
@@ -31,15 +30,15 @@ export const getStaticPaths: GetStaticPaths<Params> = async (ctx) => {
 
   return {
     paths: posts.map((post) => ({
-      params: { category: post.paths[0], post: post.paths[1] },
+      params: { slug: post.slug },
     })),
     fallback: false,
   }
 }
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
-  const { category, post: slug } = ctx.params || {}
-  const post = await Explorer.getPostByPath([category || "", slug || ""])
+  const { slug } = ctx.params || {}
+  const post = await Explorer.getPostBySlug(slug || "")
 
   if (!post) {
     return {
