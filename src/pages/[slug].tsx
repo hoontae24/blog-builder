@@ -4,6 +4,7 @@ import PostHeader from "@/components/post/PostHeader"
 import PostContent from "@/components/post/PostContent"
 import { Explorer } from "@/libs/explorer"
 import { Post } from "@/types/post"
+import PageLayout from "@/components/PageLayout"
 
 type Props = {
   post: Post
@@ -17,10 +18,10 @@ const PostPage = (props: Props) => {
   const { post } = props
 
   return (
-    <div>
+    <PageLayout>
       <PostHeader post={post} />
       <PostContent post={post} />
-    </div>
+    </PageLayout>
   )
 }
 
