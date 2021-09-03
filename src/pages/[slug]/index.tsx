@@ -1,10 +1,13 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 
+import PageLayout from "@/components/PageLayout"
 import PostHeader from "@/components/post/PostHeader"
 import PostContent from "@/components/post/PostContent"
+import TagSection from "@/components/tag/TagSection"
 import { Explorer } from "@/libs/explorer"
 import { Post } from "@/types/post"
-import PageLayout from "@/components/PageLayout"
+
+import cls from "./index.module.scss"
 
 type Props = {
   post: Post
@@ -19,8 +22,11 @@ const PostPage = (props: Props) => {
 
   return (
     <PageLayout>
-      <PostHeader post={post} />
-      <PostContent post={post} />
+      <div className={cls.root}>
+        <PostHeader post={post} />
+        <PostContent post={post} />
+        <TagSection tags={post.tags} />
+      </div>
     </PageLayout>
   )
 }

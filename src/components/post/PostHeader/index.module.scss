@@ -1,0 +1,36 @@
+.root {
+  --x: "";
+  margin-bottom: 32px;
+}
+
+.title {
+  --x: "";
+  font-weight: normal;
+  margin: 0;
+}
+
+.metaContainer {
+  --x: "";
+}
+
+.meta {
+  color: #999;
+  font-size: smaller;
+  vertical-align: top;
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}
+
+.date {
+  --x: "";
+}
+
+.category {
+  --x: "";
+}
+
+.bottomLine {
+  --x: "";
+  border-color: #e1e4e8;
+}
