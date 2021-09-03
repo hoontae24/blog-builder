@@ -1,0 +1,16 @@
+.root {
+  --x: "";
+}
+
+.content {
+  --x: "";
+
+  img {
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    display: block;
+  }
+}

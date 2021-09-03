@@ -1,6 +1,9 @@
+import clsx from "clsx"
 import hljs from "highlight.js"
 import marked from "marked"
 import { memo, useEffect } from "react"
+
+import { HasClassName } from "@/types/component"
 
 import "github-markdown-css"
 import "highlight.js/styles/github.css"
@@ -9,9 +12,11 @@ type OwnProps = {
   markdown: string
 }
 
-type Props = OwnProps
+type Props = OwnProps & HasClassName
 
 const _Markdown = (props: Props) => {
+  const { className } = props
+
   const html = marked(props.markdown)
 
   useEffect(() => {
@@ -20,7 +25,7 @@ const _Markdown = (props: Props) => {
 
   return (
     <span
-      className="markdown-body"
+      className={clsx("markdown-body", className)}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )
