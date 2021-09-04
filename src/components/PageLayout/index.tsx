@@ -1,5 +1,7 @@
 import { PropsWithChildren } from "react"
 
+import PageHeader from "@/components/PageLayout/PageHeader"
+
 import cls from "./index.module.scss"
 
 type OwnProps = {
@@ -11,11 +13,14 @@ type Props = PropsWithChildren<OwnProps>
 const _PageLayout = (props: Props) => {
   const { title, children } = props
   return (
-    <div className={cls.root}>
-      <div className={cls.appbar}>appbar</div>
-      <div className={cls.container}>{children}</div>
-      <div className={cls.footer}>footer</div>
-    </div>
+    <>
+      <PageHeader title={title} />
+      <div className={cls.root}>
+        <div className={cls.appbar}>appbar</div>
+        <div className={cls.container}>{children}</div>
+        <div className={cls.footer}>footer</div>
+      </div>
+    </>
   )
 }
 

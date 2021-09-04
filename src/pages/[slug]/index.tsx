@@ -21,7 +21,7 @@ const PostPage = (props: Props) => {
   const { post } = props
 
   return (
-    <PageLayout>
+    <PageLayout title={post.title}>
       <div className={cls.root}>
         <PostHeader post={post} />
         <PostContent post={post} />
