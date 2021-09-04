@@ -1,0 +1,59 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    env:
+      ARTICLES_REPOSITORY: ${{ secrets.ARTICLES_REPOSITORY }}
+      DEPLOY_REPOSITORY: ${{ secrets.DEPLOY_REPOSITORY }}
+      DEPLOY_REPOSITORY_TOKEN: ${{ secrets.DEPLOY_REPOSITORY_TOKEN }}
+      GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+      GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+      BASE_PATH: ${{ secrest.BASE_PATH }}
+      ARTICLES_ROOT: ${{ secrets.ARTICLES_ROOT }}
+      ARTICLE_FILENAME: ${{ secrets.ARTICLE_FILENAME }}
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+
+      - name: Installing my packages
+        run: npm ci
+
+      - name: Pull articles
+        run: git clone ${{ env.ARTICLES_REPOSITORY }} ${{ env.ARTICLES_ROOT }}
+
+      - name: Build my App
+        run: npm run build
+
+      - name: Move articles
+        run: cp ${{ env.ARTICLES_ROOT }}/ out/
+
+      - run: touch out/.nojekyll
+
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%dT%H:%M:%S')"
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.0
+        with:
+          GITHUB_TOKEN: ${{ env.DEPLOY_REPOSITORY_TOKEN }}
+          repository-name: ${{ env.DEPLOY_REPOSITORY }}
+          branch: main # The branch the action should deploy to.
+          folder: . # The folder the action should deploy.
+          commit-message: "Sites published at ${{ steps.date.outputs.date }} 🚀"
+          single-commit: true
+          clean: true
+          git-config-name: ${{ env.GIT_USERNAME }}
+          git-config-email: ${{ env.GIT_EMAIL }}
