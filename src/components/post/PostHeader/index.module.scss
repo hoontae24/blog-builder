@@ -5,25 +5,39 @@
 
 .title {
   --x: "";
-  font-weight: normal;
+  font-weight: 400;
   margin: 0;
 }
 
 .metaContainer {
   --x: "";
+  display: flex;
 }
 
 .meta {
   color: #999;
-  font-size: smaller;
-  vertical-align: top;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
   &:not(:last-child) {
-    margin-right: 8px;
+    margin-right: 16px;
   }
+}
+
+.icon {
+  --x: "";
+  margin-right: 8px;
 }
 
 .date {
   --x: "";
+}
+
+.separator {
+  display: inline-block;
+  width: 1px;
+  height: calc(0.875rem / 3 * 2);
+  background-color: #999;
+  align-self: center;
 }
 
 .category {
