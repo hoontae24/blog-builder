@@ -1,6 +1,8 @@
+@import "@/libs/theme.scss";
+
 .root {
   --x: "";
-  margin-bottom: 32px;
+  margin-bottom: spacing(4);
 }
 
 .content {

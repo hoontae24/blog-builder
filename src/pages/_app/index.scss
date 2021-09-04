@@ -1,0 +1,10 @@
+@import "@/libs/theme.scss";
+
+body {
+  padding: 0;
+  margin: 0;
+  
+  font-family: "Noto Sans KR", NotoSans, "Apple SD Gothic Neo", sans-serif;
+  font-size: $font-size-body-1;
+  color: $color-text-1;
+}

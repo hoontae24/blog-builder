@@ -1,0 +1,13 @@
+// palette
+$color-text-1: #000000;
+$color-text-2: #999999;
+
+// typography
+$font-size-body-1: 16px; // global default font-size
+
+// spacing
+$unit: 8px;
+@function spacing($value) {
+  $result: $value * $unit;
+  @return $result;
+}
