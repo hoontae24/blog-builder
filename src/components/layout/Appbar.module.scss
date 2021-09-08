@@ -1,0 +1,29 @@
+@import "@/libs/theme.scss";
+
+.root {
+  position: sticky;
+  top: 0;
+  height: 60px;
+  background-color: $color-bg-1;
+  border-bottom: 1px solid $color-border-1;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: spacing(0) spacing(6);
+}
+
+.logo {
+  align-self: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: $color-text-1;
+  font-size: large;
+}
+
+.navs {
+  display: flex;
+  align-items: center;
+}
