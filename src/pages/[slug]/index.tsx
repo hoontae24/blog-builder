@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next"
 
-import PageLayout from "@/components/PageLayout"
+import PageLayout from "@/components/layout/PageLayout"
 import PostHeader from "@/components/post/PostHeader"
 import PostContent from "@/components/post/PostContent"
 import TagSection from "@/components/tag/TagSection"

@@ -6,11 +6,11 @@ type OwnProps = {
 
 type Props = OwnProps
 
-const _PageHeader = (props: Props) => {
+const _PageHead = (props: Props) => {
   const { title } = props
   return <Head>{title && <title>{title}</title>}</Head>
 }
 
-const PageHeader = _PageHeader
+const PageHead = _PageHead
 
-export default PageHeader
+export default PageHead

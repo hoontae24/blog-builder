@@ -1,4 +1,4 @@
-import Markdown from "@/components/Markdown"
+import Markdown from "@/components/parts/Markdown"
 import { Post } from "@/types/post"
 
 import cls from "./index.module.scss"
