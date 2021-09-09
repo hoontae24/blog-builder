@@ -3,7 +3,7 @@
 .root {
   position: sticky;
   top: 0;
-  height: 60px;
+  height: $appbar-height;
   background-color: $color-bg-1;
   border-bottom: 1px solid $color-border-1;
 }
@@ -26,4 +26,8 @@
 .navs {
   display: flex;
   align-items: center;
+}
+
+.nav-img {
+  display: block;
 }

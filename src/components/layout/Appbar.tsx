@@ -11,10 +11,6 @@ type Props = OwnProps
 const _Appbar = (props: Props) => {
   const env = useEnv()
 
-  const navs = [
-    { href: env.GITHUB_URL, content: <a target="_blank">GITHUB</a> },
-  ]
-
   return (
     <div className={cls.root}>
       <div className={cls.container}>
@@ -22,9 +18,15 @@ const _Appbar = (props: Props) => {
           <a className={cls.logo}>{env.BLOG_TITLE}</a>
         </Link>
         <div className={cls.navs}>
-          {navs.map(
-            (nav) => nav.href && <Link href={nav.href}>{nav.content}</Link>
-          )}
+          <a href={env.GITHUB_URL} target="_blank" title="Github">
+            <img
+              className={cls["nav-img"]}
+              src={`${env.BASE_PATH}/assets/GitHub-Mark-32px.png`}
+              alt="Github"
+              width={30}
+              height={30}
+            />
+          </a>
         </div>
       </div>
     </div>

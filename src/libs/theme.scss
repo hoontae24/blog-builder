@@ -7,6 +7,9 @@ $color-border-1: #e1e4e8;
 // typography
 $font-size-body-1: 16px; // global default font-size
 
+// shape
+$appbar-height: 55px;
+
 // spacing
 $unit: 8px;
 @function spacing($value) {
