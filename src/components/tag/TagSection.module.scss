@@ -1,0 +1,7 @@
+@import "@/libs/theme.scss";
+
+.tag {
+  &:not(:last-child) {
+    margin-right: spacing(1);
+  }
+}

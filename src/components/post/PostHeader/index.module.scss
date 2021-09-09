@@ -18,8 +18,8 @@
 
 .meta {
   color: $color-text-2;
-  font-size: 0.875rem;
-  line-height: 0.875rem;
+  font-size: $font-size-body-2;
+  line-height: $font-size-body-2;
   &:not(:last-child) {
     margin-right: spacing(2);
   }

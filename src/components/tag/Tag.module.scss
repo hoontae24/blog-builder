@@ -1,0 +1,10 @@
+@import "@/libs/theme.scss";
+
+.root {
+  padding: spacing(0.25) spacing(0.5);
+  text-transform: uppercase;
+  font-size: $font-size-body-3;
+  color: $color-primary-main;
+  background: $color-primary-bg;
+  border: 1px solid $color-primary-border;
+}

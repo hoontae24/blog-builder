@@ -1,5 +1,7 @@
 import Tag from "@/components/tag/Tag"
 
+import cls from "./TagSection.module.scss"
+
 type OwnProps = {
   tags: string[]
 }
@@ -12,7 +14,7 @@ const _TagSection = (props: Props) => {
   return (
     <span>
       {tags.map((tag) => (
-        <Tag key={tag} tag={tag} />
+        <Tag key={tag} className={cls.tag} tag={tag} />
       ))}
     </span>
   )
