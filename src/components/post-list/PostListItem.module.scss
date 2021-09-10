@@ -1,0 +1,77 @@
+@import "@/libs/theme.scss";
+
+.anchor {
+  color: unset;
+  text-decoration: none;
+}
+
+.root {
+  margin-bottom: spacing(2);
+}
+
+.card {
+  padding: spacing(2);
+  display: flex;
+  cursor: pointer;
+}
+
+.thumbnailContainer {
+  margin-right: spacing(2);
+  width: 150px;
+  min-width: 150px;
+  height: 120px;
+}
+
+.thumbnail {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.content {
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: $font-size-heading-5;
+  font-weight: 400;
+  margin: 0;
+  margin-bottom: spacing(1);
+}
+
+.description {
+  margin: 0;
+  color: $color-text-2;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* ellipsis line */
+  -webkit-box-orient: vertical;
+
+  /* webkit 엔진을 사용하지 않는 브라우저를 위한 속성. */
+  /* height = line-height * line = 1.2em * 3 = 3.6em  */
+  line-height: 1.2rem;
+  height: 2.4rem;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flen;
+}
+
+.date {
+  color: $color-text-3;
+  font-size: $font-size-body-2;
+}

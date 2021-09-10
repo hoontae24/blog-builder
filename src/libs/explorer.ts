@@ -13,6 +13,8 @@ const filename = env.ARTICLE_FILENAME
 export class Explorer {
   static loaded = false
   static posts: Post[] = []
+  static tags: string[] = []
+  static tagCountMap: Record<string, number> = {}
 
   static getPosts = async (): Promise<Post[]> => {
     if (!Explorer.loaded) await Explorer.run()
@@ -28,6 +30,8 @@ export class Explorer {
     const paths = await getPaths()
 
     const posts: Post[] = []
+    const tags: string[] = []
+
     for (const [group, slug] of paths) {
       const path = [root, group, slug, filename].join("/")
       const { content, data } = grayMatter.read(path, {
@@ -54,6 +58,7 @@ export class Explorer {
       }
 
       posts.push(post)
+      tags.push(...post.tags)
     }
     posts.sort((prev, next) => {
       return (
@@ -63,6 +68,11 @@ export class Explorer {
     })
 
     Explorer.posts = posts
+    Explorer.tags = tags.filter((v, i, arr) => arr.indexOf(v) === i)
+    Explorer.tagCountMap = tags.reduce(
+      (res, tag) => ({ ...res, [tag]: (res[tag] || 0) + 1 }),
+      {} as Record<string, number>
+    )
     Explorer.loaded = true
     return Explorer
   }
