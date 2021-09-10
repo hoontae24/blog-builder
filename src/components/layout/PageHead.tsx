@@ -1,6 +1,6 @@
 import Head from "next/head"
 
-import { useEnv } from "@/hooks/env"
+import config from "@/config.json"
 
 type OwnProps = {
   title?: string
@@ -9,8 +9,7 @@ type OwnProps = {
 type Props = OwnProps
 
 const _PageHead = (props: Props) => {
-  const env = useEnv()
-  const { title = env.BLOG_TITLE } = props
+  const { title = config.site_name } = props
 
   return (
     <Head>

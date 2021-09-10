@@ -18,8 +18,6 @@ jobs:
       BASE_PATH: ${{ secrets.BASE_PATH }}
       ARTICLES_ROOT: ${{ secrets.ARTICLES_ROOT }}
       ARTICLE_FILENAME: ${{ secrets.ARTICLE_FILENAME }}
-      BLOG_TITLE: ${{ secrets.BLOG_TITLE }}
-      GH_URL: ${{ secrets.GH_URL }}
 
     steps:
       - name: Checkout 🛎️

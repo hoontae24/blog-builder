@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import { useEnv } from "@/hooks/env"
+import config from "@/config.json"
 
 import cls from "./Appbar.module.scss"
 
@@ -15,10 +16,10 @@ const _Appbar = (props: Props) => {
     <div className={cls.root}>
       <div className={cls.container}>
         <Link href="/">
-          <a className={cls.logo}>{env.BLOG_TITLE}</a>
+          <a className={cls.logo}>{config.site_name}</a>
         </Link>
         <div className={cls.navs}>
-          <a href={env.GITHUB_URL} target="_blank" title="Github">
+          <a href={config.github_url} target="_blank" title="Github">
             <img
               className={cls["nav-img"]}
               src={`${env.BASE_PATH}/assets/GitHub-Mark-32px.png`}
