@@ -1,9 +1,10 @@
 import Link from "next/link"
 
+import TagSection from "@/components/tag/TagSection"
+import { formatPostDate } from "@/libs/post"
 import { Post } from "@/types/post"
 
 import cls from "./PostListItem.module.scss"
-import TagSection from "@/components/tag/TagSection"
 
 type OwnProps = {
   post: Post
@@ -27,7 +28,7 @@ const _PostListItem = (props: Props) => {
               <p className={cls.description}>{post.excerpt}</p>
               <div className={cls.grow} />
               <div className={cls.meta}>
-                <span className={cls.date}>{post.date}</span>
+                <span className={cls.date}>{formatPostDate(post.date)}</span>
                 <TagSection tags={post.tags} />
               </div>
             </div>

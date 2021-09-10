@@ -1,10 +1,10 @@
 import clsx from "clsx"
-import dayjs from "dayjs"
 
+import { CalendarAltIcon, CategoryIcon } from "@/components/icons"
+import { formatPostDate } from "@/libs/post"
 import { Post } from "@/types/post"
 
 import cls from "./index.module.scss"
-import { CalendarAltIcon, CategoryIcon } from "@/components/icons"
 
 type OwnProps = {
   post: Post
@@ -23,7 +23,7 @@ const _PostHeader = (props: Props) => {
       <div className={cls.metaContainer}>
         <span className={clsx(cls.meta, cls.date)} title="작성일">
           <CalendarAltIcon className={cls.icon} />
-          {dayjs(date).format("YYYY. M. D.")}
+          {formatPostDate(date)}
         </span>
         <span className={clsx(cls.meta, cls.separator)}></span>
         <span className={clsx(cls.meta, cls.category)} title="카테고리">
