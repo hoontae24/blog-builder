@@ -1,14 +1,17 @@
+import clsx from "clsx"
 import { PropsWithChildren } from "react"
+
+import { HasClassName } from "@/types/component"
 
 import cls from "./Container.module.scss"
 
 type OwnProps = {}
 
-type Props = PropsWithChildren<OwnProps>
+type Props = PropsWithChildren<OwnProps> & HasClassName
 
 const _Container = (props: Props) => {
-  const { children } = props
-  return <div className={cls.root}>{children}</div>
+  const { className, children } = props
+  return <div className={clsx(cls.root, className)}>{children}</div>
 }
 
 const Container = _Container

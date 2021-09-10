@@ -4,6 +4,8 @@ import Appbar from "@/components/layout/Appbar"
 import Container from "@/components/layout/Container"
 import Footer from "@/components/layout/Footer"
 
+import cls from "./PageBody.module.scss"
+
 type OwnProps = {}
 
 type Props = PropsWithChildren<OwnProps>
@@ -14,7 +16,7 @@ const _PageBody = (props: Props) => {
   return (
     <>
       <Appbar />
-      <Container>{children}</Container>
+      <Container className={cls.container}>{children}</Container>
       <Footer />
     </>
   )

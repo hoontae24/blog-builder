@@ -1,0 +1,10 @@
+@import "@/libs/theme.scss";
+
+.root {
+  box-sizing: border-box;
+  height: $footer-height;
+  border-top: 1px solid $color-border-1;
+  padding: spacing(2);
+  color: $color-text-2;
+  font-size: $font-size-body-2;
+}

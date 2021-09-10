@@ -1,0 +1,5 @@
+@import "@/libs/theme.scss";
+
+.container {
+  min-height: calc(100vh - (#{$appbar-height} + #{$footer-height} + 2px));
+}
