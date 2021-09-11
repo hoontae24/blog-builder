@@ -10,4 +10,5 @@ export interface Post {
   markdown: string
   html: string
   excerpt: string
+  thumbnail: string
 }
