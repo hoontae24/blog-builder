@@ -21,9 +21,7 @@ const _PostListItem = (props: Props) => {
         <li className={cls.root}>
           <div className={cls.card}>
             {post.thumbnail && (
-              <div className={cls.thumbnailContainer}>
-                <img className={cls.thumbnail} src={post.thumbnail} />
-              </div>
+              <img className={cls.thumbnail} src={post.thumbnail} />
             )}
             <div className={cls.content}>
               <h5 className={cls.title}>{post.title}</h5>
