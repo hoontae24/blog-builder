@@ -42,6 +42,7 @@ export class Explorer {
         `${env.BASE_PATH}/${group}/${slug}/img/`
       )
       const html = marked(markdown)
+      const [, image = ""] = markdown.match(/!\[.+\]\((.+)\)/i) || []
 
       const post: Post = {
         paths: [group, slug],
@@ -55,6 +56,7 @@ export class Explorer {
         markdown: markdown,
         html: html,
         excerpt: htmlParse(html).innerText.trim().slice(0, 200),
+        thumbnail: image,
       }
 
       posts.push(post)
