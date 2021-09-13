@@ -14,7 +14,7 @@ type Props = {
 }
 
 type Params = {
-  slug: string
+  round: string
 }
 
 const PostPage = (props: Props) => {
@@ -38,15 +38,15 @@ export const getStaticPaths: GetStaticPaths<Params> = async (ctx) => {
 
   return {
     paths: posts.map((post) => ({
-      params: { slug: post.slug },
+      params: { round: String(post.round) },
     })),
     fallback: false,
   }
 }
 
 export const getStaticProps: GetStaticProps<Props, Params> = async (ctx) => {
-  const { slug } = ctx.params || {}
-  const post = await Explorer.getPostBySlug(slug || "")
+  const { round } = ctx.params || {}
+  const post = await Explorer.getPostByRound(Number(round) || 0)
 
   if (!post) return { notFound: true }
   return {

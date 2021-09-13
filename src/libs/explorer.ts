@@ -26,13 +26,20 @@ export class Explorer {
     return Explorer.posts.find((post) => post.slug === slug)
   }
 
+  static getPostByRound = async (round: number): Promise<Post | undefined> => {
+    if (!Explorer.loaded) await Explorer.run()
+    return Explorer.posts.find((post) => post.round === round)
+  }
+
   static run = async (): Promise<typeof Explorer> => {
     const paths = await getPaths()
 
     const posts: Post[] = []
     const tags: string[] = []
 
-    for (const [group, slug] of paths) {
+    for (let i = 0, len = paths.length; i < len; i = i + 1) {
+      const [group, slug] = paths[i]
+      // for (const [group, slug] of paths) {
       const path = [root, group, slug, filename].join("/")
       const { content, data } = grayMatter.read(path, {
         excerpt: true,
@@ -45,6 +52,8 @@ export class Explorer {
       const [, image = ""] = markdown.match(/!\[.+\]\((.+)\)/i) || []
 
       const post: Post = {
+        href: "",
+        round: i + 1,
         paths: [group, slug],
         slug: slug,
         title: data.title,
@@ -67,6 +76,11 @@ export class Explorer {
         dayjs(next.date).toDate().getTime() -
         dayjs(prev.date).toDate().getTime()
       )
+    })
+    posts.forEach((post, i, arr) => {
+      const round = arr.length - i
+      post.round = round
+      post.href = String(round)
     })
 
     Explorer.posts = posts
