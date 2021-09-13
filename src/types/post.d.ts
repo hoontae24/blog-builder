@@ -1,4 +1,6 @@
 export interface Post {
+  href: string
+  round: number
   paths: string[]
   slug: string
   title: string

@@ -16,7 +16,7 @@ const _PostListItem = (props: Props) => {
   const { post } = props
 
   return (
-    <Link href={`/${post.slug}`}>
+    <Link href={`/${post.href}`}>
       <a className={cls.anchor}>
         <li className={cls.root}>
           <div className={cls.card}>
