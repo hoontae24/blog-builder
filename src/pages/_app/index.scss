@@ -13,3 +13,7 @@ hr {
   border-color: $color-border-1;
   border-style: solid;
 }
+
+.markdown-body pre code.hljs {
+  padding: 0;
+}
