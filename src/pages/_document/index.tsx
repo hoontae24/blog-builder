@@ -13,6 +13,7 @@ class MyDocument extends Document {
   }
 
   render() {
+    const basePath = (typeof process !== "undefined" && process.env.BASE_PATH) || (typeof window !== "undefined" && window.__NEXT_DATA__?.assetPrefix) || ""
     return (
       <Html lang="ko">
         <Head>
@@ -34,6 +35,10 @@ class MyDocument extends Document {
             integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
             crossOrigin="anonymous"
           />
+          
+          {/* favicon */}
+          <link rel="shortcut icon" href={`${basePath}/favicon.ico`} type="image/x-icon" />
+          <link rel="icon" href={`${basePath}/favicon.ico`} type="image/x-icon" />
         </Head>
         <body>
           <Main />
