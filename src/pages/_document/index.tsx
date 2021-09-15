@@ -5,7 +5,6 @@ import Document, {
   NextScript,
   DocumentContext,
 } from "next/document"
-import Link from "next/link"
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -37,8 +36,8 @@ class MyDocument extends Document {
           />
           
           {/* favicon */}
-          <Link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-          <Link rel="icon" href="/favicon.ico" type="image/x-icon" />
+          <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+          <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         </Head>
         <body>
           <Main />
