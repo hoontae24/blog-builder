@@ -5,17 +5,15 @@ import Document, {
   NextScript,
   DocumentContext,
 } from "next/document"
-
-import env from "@/libs/env"
+import Link from "next/link"
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps, env }
+    return { ...initialProps }
   }
 
   render() {
-    const { env } = this.props
     return (
       <Html lang="ko">
         <Head>
@@ -39,8 +37,8 @@ class MyDocument extends Document {
           />
           
           {/* favicon */}
-          <link rel="shortcut icon" href={`/${env.BASE_PATH}/favicon.ico`} type="image/x-icon" />
-          <link rel="icon" href={`/${env.BASE_PATH}/favicon.ico`} type="image/x-icon" />
+          <Link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+          <Link rel="icon" href="/favicon.ico" type="image/x-icon" />
         </Head>
         <body>
           <Main />
