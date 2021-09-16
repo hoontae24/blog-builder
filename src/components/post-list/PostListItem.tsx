@@ -24,7 +24,9 @@ const _PostListItem = (props: Props) => {
               <img className={cls.thumbnail} src={post.thumbnail} />
             )}
             <div className={cls.content}>
-              <h5 className={cls.title}>{post.title}</h5>
+              <h5 className={cls.title} title={post.title}>
+                {post.title}
+              </h5>
               <p className={cls.description}>{post.excerpt}</p>
               <div className={cls.grow} />
               <div className={cls.meta}>

@@ -29,6 +29,7 @@
 .content {
   flex-grow: 1;
   flex-shrink: 1;
+  width: calc(100% - 150px - 16px);
   display: flex;
   flex-direction: column;
 }
@@ -38,6 +39,9 @@
   font-weight: 400;
   margin: 0;
   margin-bottom: spacing(1);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .description {
