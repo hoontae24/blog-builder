@@ -4,7 +4,7 @@ export interface Post {
   paths: string[]
   slug: string
   title: string
-  subtitle: string
+  description: string
   date: string
   category: string
   tags: string[]

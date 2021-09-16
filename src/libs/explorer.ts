@@ -44,6 +44,7 @@ export class Explorer {
       const { content, data } = grayMatter.read(path, {
         excerpt: true,
       })
+      const description = data.description || ""
       const markdown = content.replace(
         /\.\/img\//g,
         `${env.BASE_PATH}/${group}/${slug}/img/`
@@ -57,14 +58,16 @@ export class Explorer {
         paths: [group, slug],
         slug: slug,
         title: data.title,
-        subtitle: data.subtitle || "",
+        description: description,
         date: dayjs(data.date).format("YYYY-MM-DD"),
         category: data.category,
         tags: data.tags,
         seriesId: data.seriesId || null,
         markdown: markdown,
         html: html,
-        excerpt: htmlParse(html).innerText.trim().slice(0, 200),
+        excerpt:
+          (description ? `${description}\n` : "") +
+          htmlParse(html).innerText.trim().slice(0, 200),
         thumbnail: image,
       }
 
