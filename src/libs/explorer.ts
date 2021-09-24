@@ -4,6 +4,7 @@ import fs from "fs/promises"
 import marked from "marked"
 import { parse as htmlParse } from "node-html-parser"
 
+import config from "@/config.json"
 import env from "@/libs/env"
 import { Post } from "@/types/post"
 
@@ -44,12 +45,15 @@ export class Explorer {
       const { content, data } = grayMatter.read(path, {
         excerpt: true,
       })
-      const description = data.description || ""
       const markdown = content.replace(
         /\.\/img\//g,
         `${env.BASE_PATH}/${group}/${slug}/img/`
       )
       const html = marked(markdown)
+      const description = data.description?.split("\n").join(" ") || ""
+      const excerpt =
+        `${description} ` +
+        htmlParse(html).innerText.trim().slice(0, 200).split("\n").join(" ")
       const [, image = ""] = markdown.match(/!\[.+\]\((.+)\)/i) || []
 
       const post: Post = {
@@ -65,10 +69,13 @@ export class Explorer {
         seriesId: data.seriesId || null,
         markdown: markdown,
         html: html,
-        excerpt:
-          (description ? `${description}\n` : "") +
-          htmlParse(html).innerText.trim().slice(0, 200),
+        excerpt: excerpt,
         thumbnail: image,
+        thumbnailUrl:
+          config.site_url +
+          (image.startsWith(env.BASE_PATH)
+            ? image.slice(env.BASE_PATH.length)
+            : image),
       }
 
       posts.push(post)

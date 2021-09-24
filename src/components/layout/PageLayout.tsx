@@ -4,16 +4,26 @@ import PageBody from "@/components/layout/PageBody"
 import PageHead from "@/components/layout/PageHead"
 
 type OwnProps = {
+  url?: string
   title?: string
+  description?: string
+  image?: string
+  tags?: string[]
 }
 
 type Props = PropsWithChildren<OwnProps>
 
 const _PageLayout = (props: Props) => {
-  const { title, children } = props
+  const { url, title, description, image, tags, children } = props
   return (
     <>
-      <PageHead title={title} />
+      <PageHead
+        url={url}
+        title={title}
+        description={description}
+        image={image}
+        tags={tags}
+      />
       <PageBody>{children}</PageBody>
     </>
   )
