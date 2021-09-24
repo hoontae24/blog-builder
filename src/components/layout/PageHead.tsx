@@ -1,6 +1,5 @@
-import Head from "next/head"
+import { NextSeo } from "next-seo"
 
-import OpenGraphs from "@/components/OpenGraphs"
 import config from "@/config.json"
 
 type OwnProps = {
@@ -8,24 +7,34 @@ type OwnProps = {
   title?: string
   description?: string
   image?: string
+  tags?: string[]
 }
 
 type Props = OwnProps
 
 const _PageHead = (props: Props) => {
-  const { url, title = config.site_name, description, image } = props
+  const {
+    url = config.site_url,
+    title = config.site_name,
+    description,
+    image,
+    tags,
+  } = props
 
   return (
-    <Head>
-      <title>{title}</title>
-
-      <OpenGraphs
-        url={url}
+    <>
+      <NextSeo
         title={title}
         description={description}
-        image={image}
+        openGraph={{
+          type: "blog",
+          url: url,
+          site_name: config.site_name,
+          images: image ? [{ url: image }] : [],
+          article: { tags },
+        }}
       />
-    </Head>
+    </>
   )
 }
 

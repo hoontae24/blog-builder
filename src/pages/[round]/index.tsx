@@ -28,6 +28,7 @@ const PostPage = (props: Props) => {
       title={post.title}
       description={post.excerpt}
       image={post.thumbnailUrl}
+      tags={post.tags}
     >
       <div className={cls.root}>
         <PostHeader post={post} />

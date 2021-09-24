@@ -8,12 +8,13 @@ type OwnProps = {
   title?: string
   description?: string
   image?: string
+  tags?: string[]
 }
 
 type Props = PropsWithChildren<OwnProps>
 
 const _PageLayout = (props: Props) => {
-  const { url, title, description, image, children } = props
+  const { url, title, description, image, tags, children } = props
   return (
     <>
       <PageHead
@@ -21,6 +22,7 @@ const _PageLayout = (props: Props) => {
         title={title}
         description={description}
         image={image}
+        tags={tags}
       />
       <PageBody>{children}</PageBody>
     </>

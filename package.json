@@ -26,6 +26,7 @@
     "highlight.js": "^11.2.0",
     "marked": "^3.0.2",
     "next": "^11.1.0",
+    "next-seo": "^4.28.1",
     "node-html-parser": "^4.1.4",
     "prettier": "^2.3.2",
     "react": "^17.0.2",
