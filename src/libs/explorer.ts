@@ -4,6 +4,7 @@ import fs from "fs/promises"
 import marked from "marked"
 import { parse as htmlParse } from "node-html-parser"
 
+import config from "@/config.json"
 import env from "@/libs/env"
 import { Post } from "@/types/post"
 
@@ -69,6 +70,11 @@ export class Explorer {
           (description ? `${description}\n` : "") +
           htmlParse(html).innerText.trim().slice(0, 200),
         thumbnail: image,
+        thumbnailUrl:
+          config.site_url +
+          (image.startsWith(env.BASE_PATH)
+            ? image.slice(env.BASE_PATH.length)
+            : image),
       }
 
       posts.push(post)
