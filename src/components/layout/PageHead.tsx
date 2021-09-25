@@ -29,6 +29,22 @@ const _PageHead = (props: Props) => {
       <Head>
         {tags && <meta name="keywords" content={tags.join(", ")} />}
         <meta name="author" content={author} />
+
+        {/* <!-- Global site tag (gtag.js) - Google Analytics --> */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${config.ga_id}`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: [
+              `window.dataLayer = window.dataLayer || [];`,
+              `function gtag(){dataLayer.push(arguments);}`,
+              `gtag('js', new Date());`,
+              `gtag('config', '${config.ga_id}');`,
+            ].join("\n"),
+          }}
+        />
       </Head>
       <NextSeo
         title={title}
