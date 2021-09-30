@@ -8,7 +8,7 @@ type OwnProps = {}
 type Props = OwnProps & HasClassName
 
 const _CategoryIcon = (props: Props) => {
-  return <i className={clsx("fas fa-sitemap", props.className)} />
+  return <i className={clsx("fas fa-list-ul", props.className)} />
 }
 
 const CategoryIcon = memo(_CategoryIcon)
