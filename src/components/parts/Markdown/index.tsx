@@ -4,7 +4,7 @@ import marked from "marked"
 import { memo, useEffect } from "react"
 
 import { HasClassName } from "@/types/component"
-import cls from "./indes.module.scss"
+import cls from "./index.module.scss"
 
 import "github-markdown-css"
 import "highlight.js/styles/github.css"
