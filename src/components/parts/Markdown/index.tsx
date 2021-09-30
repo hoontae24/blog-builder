@@ -4,6 +4,7 @@ import marked from "marked"
 import { memo, useEffect } from "react"
 
 import { HasClassName } from "@/types/component"
+import cls from "./index.module.scss"
 
 import "github-markdown-css"
 import "highlight.js/styles/github.css"
@@ -25,7 +26,7 @@ const _Markdown = (props: Props) => {
 
   return (
     <span
-      className={clsx("markdown-body", className)}
+      className={clsx("markdown-body", cls.markdown, className)}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   )
