@@ -48,9 +48,11 @@
   margin: 0;
   color: $color-text-2;
 
+  text-align: justify;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
+  word-break: break-all;
   display: -webkit-box;
   -webkit-line-clamp: 2; /* ellipsis line */
   -webkit-box-orient: vertical;
