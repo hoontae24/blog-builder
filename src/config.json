@@ -3,5 +3,9 @@
   "site_name": "hoontae24.blog",
   "author": "hoontae24",
   "github_url": "https://github.com/hoontae24",
-  "ga_id": "G-6S9QZLBB0S"
+  "ga_id": "G-6S9QZLBB0S",
+  "utterances": {
+    "repo": "hoontae24/blog-articles",
+    "theme": "github-light"
+  }
 }
