@@ -32,10 +32,10 @@ const PostPage = (props: Props) => {
       tags={post.tags}
     >
       <div className={cls.root}>
-        <PostHeader post={post} />
-        <PostContent post={post} />
-        <TagSection className={cls.tagSection} tags={post.tags} />
-        <PostComment post={post} />
+        <PostHeader className={cls.section} post={post} />
+        <PostContent className={cls.section} post={post} />
+        <TagSection className={cls.section} tags={post.tags} />
+        <PostComment className={cls.section} post={post} />
       </div>
     </PageLayout>
   )
