@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticProps } from "next"
 
 import PageLayout from "@/components/layout/PageLayout"
 import PostHeader from "@/components/post/PostHeader"
-import PostComment from "@/components/post/PostComment"
+// import PostComment from "@/components/post/PostComment"
 import PostContent from "@/components/post/PostContent"
 import TagSection from "@/components/tag/TagSection"
 import config from "@/config.json"
@@ -35,7 +35,7 @@ const PostPage = (props: Props) => {
         <PostHeader className={cls.section} post={post} />
         <PostContent className={cls.section} post={post} />
         <TagSection className={cls.section} tags={post.tags} />
-        {/*<PostComment className={cls.section} post={post} />*/}
+        {/* <PostComment className={cls.section} post={post} /> */}
       </div>
     </PageLayout>
   )
