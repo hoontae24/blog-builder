@@ -1,6 +1,12 @@
 @import "@/libs/theme.scss";
 
 .markdown {
+  font-size: $font-size-body-1;
+
+  @include mobile {
+    font-size: $font-size-body-1-mobile;
+  }
+
   h1,
   h2 {
     padding-top: spacing(4);
