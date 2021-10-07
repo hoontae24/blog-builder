@@ -1,5 +1,6 @@
 @import "@/libs/theme.scss";
 
+html,
 body {
   padding: 0;
   margin: 0;
@@ -7,6 +8,10 @@ body {
   font-family: "Noto Sans KR", NotoSans, "Apple SD Gothic Neo", sans-serif;
   font-size: $font-size-body-1;
   color: $color-text-1;
+
+  @include mobile {
+    font-size: $font-size-body-1-mobile;
+  }
 }
 
 hr {

@@ -2,4 +2,8 @@
 
 .root {
   padding: spacing(3) 0;
+
+  @include mobile {
+    padding: spacing(2) 0;
+  }
 }
