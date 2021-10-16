@@ -28,7 +28,6 @@ const _PostListItem = (props: Props) => {
                 {post.title}
               </h5>
               <p className={cls.description}>{post.excerpt}</p>
-              <div className={cls.grow} />
               <div className={cls.meta}>
                 <span className={cls.date}>{formatPostDate(post.date)}</span>
                 <TagSection tags={post.tags} />
