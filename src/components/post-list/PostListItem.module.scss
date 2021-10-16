@@ -16,8 +16,7 @@
 .card {
   padding: spacing(2);
   display: flex;
-  cursor: pointer;
-  height: 120px;
+  align-items: center;
 
   @include mobile {
     display: block;
@@ -55,19 +54,18 @@
 }
 
 .title {
-  font-size: $font-size-heading-5;
-  font-weight: 400;
   margin: 0;
   margin-bottom: spacing(1);
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  font-size: $font-size-heading-5;
+  font-weight: 400;
+  word-break: break-all;
 }
 
 .description {
   margin: 0;
-  color: $color-text-2;
+  margin-bottom: spacing(2);
 
+  color: $color-text-2;
   text-align: justify;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -81,14 +79,6 @@
   /* height = line-height * line = 1.2em * 3 = 3.6em  */
   line-height: 1.2em;
   height: 2.4em;
-
-  @include mobile {
-    margin-bottom: spacing(2);
-  }
-}
-
-.grow {
-  flex-grow: 1;
 }
 
 .meta {
