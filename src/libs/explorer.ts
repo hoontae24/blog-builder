@@ -54,7 +54,8 @@ export class Explorer {
       const excerpt =
         `${description} ` +
         htmlParse(html).innerText.trim().slice(0, 200).split("\n").join(" ")
-      const [, image = ""] = markdown.match(/!\[.+\]\((.+)\)/i) || []
+      let [, image = ""] = markdown.match(/!\[.+\]\((.+)\)/i) || []
+      image = image.split(' ')[0]
 
       const post: Post = {
         href: "",
